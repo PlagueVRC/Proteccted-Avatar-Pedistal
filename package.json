@@ -1,0 +1,16 @@
+{
+  "name": "com.lolipolicedepartment.pap",
+  "version": "1.0.0",
+  "displayName": "Protected Avatar Pedistal",
+  "description": "Protected avatar pedestal is a prefab for automatically decrypting avatars using GTAvacrypt through an avatar pedestal.",
+  "unity": "2019.4",
+  "unityRelease": "31f1",
+ "keywords": [
+    "VRChat",
+    "LPD"
+  ],
+  "author": {
+    "name": "Loli Police Department",
+    "url": "discord.gg/lpd"
+  }
+}
