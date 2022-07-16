@@ -4,8 +4,9 @@ using VRC.SDKBase;
 using UnityEditor.Animations;
 using VRC.SDK3.Avatars.Components;
 using System;
+using System.IO;
 
-namespace LoliPoliceDepartment.Utilities
+namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
 {
     public class PotectedAvatarPedistalControllerGenerator : EditorWindow
     {
@@ -27,6 +28,11 @@ namespace LoliPoliceDepartment.Utilities
         {
             keys = new bool[32];
             HeaderTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Packages/com.lolipolicedepartment.pap/Editor/TITLEBAR.png", typeof(Texture2D));
+            if (!Directory.Exists("Assets/LPD/Protected Avatar Pedistal/Controllers"))
+            {
+                Directory.CreateDirectory("Assets/LPD/Protected Avatar Pedistal/Controllers/");
+                Debug.Log("<color=teal><b>Pap Generator:</b></color> Created directory for generated controllers");
+            }
         }
         private void OnGUI()
         {

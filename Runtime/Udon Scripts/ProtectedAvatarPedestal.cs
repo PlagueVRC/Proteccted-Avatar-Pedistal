@@ -4,7 +4,7 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-namespace LoliPoliceDepartment.Utilities
+namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
 {
     public class ProtectedAvatarPedestal : UdonSharpBehaviour
     {

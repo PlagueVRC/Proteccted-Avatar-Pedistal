@@ -1,5 +1,5 @@
 ﻿{
-	"name": "LoliPoliceDepartment.Utilities",
+	"name": "LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal.Runtime",
 	    "references": [
         "UdonSharp.Runtime",
         "UdonSharp.Lib",
