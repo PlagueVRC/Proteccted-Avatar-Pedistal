@@ -195,6 +195,15 @@ namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
                 GUILayout.EndHorizontal();
             }
             GUILayout.EndArea();
+
+            GUILayout.BeginArea(new Rect(0, Screen.height - 43f, Screen.width, 25f));
+            using (new GUILayout.HorizontalScope(EditorStyles.helpBox))
+            {
+                if (GUILayout.Button(new GUIContent("Join our Discord!"), EditorStyles.miniButtonMid, GUILayout.Width(Screen.width / 3), GUILayout.Height(43))) Application.OpenURL("https://discord.gg/lpd");
+                if (GUILayout.Button(new GUIContent("Follow us on Twitter!"), EditorStyles.miniButtonMid, GUILayout.Width(Screen.width / 3), GUILayout.Height(43))) Application.OpenURL("https://twitter.com/LPD_vrchat");
+                if (GUILayout.Button(new GUIContent("Checkout our Youtube!"), EditorStyles.miniButtonMid, GUILayout.Width(Screen.width / 3), GUILayout.Height(43))) Application.OpenURL("https://www.youtube.com/c/LoliPoliceDepartment");                
+            }
+            GUILayout.EndArea();
         }
     }
 }
