@@ -26,7 +26,7 @@ namespace LoliPoliceDepartment.Utilities
         private void OnEnable()
         {
             keys = new bool[32];
-            HeaderTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/LPD/Protected Avatar Pedistal/Resources/TITLEBAR.png", typeof(Texture2D));
+            HeaderTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Packages/com.lolipolicedepartment.pap/Editor/TITLEBAR.png", typeof(Texture2D));
         }
         private void OnGUI()
         {
