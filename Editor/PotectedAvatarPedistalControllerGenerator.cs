@@ -10,7 +10,7 @@ namespace LoliPoliceDepartment.Utilities
     public class PotectedAvatarPedistalControllerGenerator : EditorWindow
     {
         private bool[] keys;
-        private string name;
+        private string controllerName;
         private bool loadMeshParam;
 
         Texture2D HeaderTexture;
@@ -39,7 +39,7 @@ namespace LoliPoliceDepartment.Utilities
             GUILayout.FlexibleSpace();
             GUILayout.Label("Name for new Animation Controller", EditorStyles.wordWrappedLabel, GUILayout.Width(Screen.width / 2 - 20f));
             GUILayout.FlexibleSpace();
-            name = GUILayout.TextField(name, GUILayout.Width(Screen.width / 2 - 20f));
+            controllerName = GUILayout.TextField(controllerName, GUILayout.Width(Screen.width / 2 - 20f));
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
 
@@ -47,25 +47,25 @@ namespace LoliPoliceDepartment.Utilities
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Generate new Animation Controller"))
             {
-                if (name == null || name =="")
+                if (controllerName == null || controllerName =="")
                 {
                     Debug.LogError("<color=teal><b>Pap Generator:</b></color> Must enter a name for new Animation Controller!");
                     return;
                 }
                 AnimatorController animator = new AnimatorController();
-                AssetDatabase.CreateAsset(animator, "Assets/LPD/Protected Avatar Pedistal/Controllers/" + name + ".controller");
+                AssetDatabase.CreateAsset(animator, "Assets/LPD/Protected Avatar Pedistal/Controllers/" + controllerName + ".controller");
                 AnimatorControllerLayer layer = new AnimatorControllerLayer
                 {
-                    name = name,
+                    name = controllerName,
                     defaultWeight = 1,
                     stateMachine = new AnimatorStateMachine
                     {
-                        name = name,
+                        name = controllerName,
                     }
                 };
                 animator.AddLayer(layer);
-                AssetDatabase.AddObjectToAsset(layer.stateMachine, "Assets/LPD/Protected Avatar Pedistal/Controllers/" + name + ".controller");
-                AnimatorState state = layer.stateMachine.AddState("Unlock " + name, Vector3.zero);
+                AssetDatabase.AddObjectToAsset(layer.stateMachine, "Assets/LPD/Protected Avatar Pedistal/Controllers/" + controllerName + ".controller");
+                AnimatorState state = layer.stateMachine.AddState("Unlock " + controllerName, Vector3.zero);
                 AssetDatabase.SaveAssets();
                 VRCAvatarParameterDriver  driver =  (VRCAvatarParameterDriver)state.AddStateMachineBehaviour(typeof(VRCAvatarParameterDriver));
 
@@ -93,7 +93,7 @@ namespace LoliPoliceDepartment.Utilities
                 EditorUtility.SetDirty(animator);
                 AssetDatabase.SaveAssets();
                 EditorGUIUtility.PingObject(animator);
-                Debug.Log("<color=teal><b>Pap Generator:</b></color> Generated animation controller " + name + " at Assets/LPD/Protected Avatar Pedistal/Controllers/");
+                Debug.Log("<color=teal><b>Pap Generator:</b></color> Generated animation controller " + controllerName + " at Assets/LPD/Protected Avatar Pedistal/Controllers/");
             }
             GUILayout.EndHorizontal();
 

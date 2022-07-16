@@ -4,16 +4,19 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-public class ProtectedAvatarPedestal : UdonSharpBehaviour
+namespace LoliPoliceDepartment.Utilities
 {
-    VRC_AvatarPedestal avatarPedestal;
-    private void Start()
+    public class ProtectedAvatarPedestal : UdonSharpBehaviour
     {
-        avatarPedestal = (VRC_AvatarPedestal)GetComponent(typeof(VRC_AvatarPedestal));
-    }
-    private void Interact()
-    {
-        avatarPedestal.SetAvatarUse(Networking.LocalPlayer);
-        Networking.LocalPlayer.UseAttachedStation();
+        VRC_AvatarPedestal avatarPedestal;
+        private void Start()
+        {
+            avatarPedestal = (VRC_AvatarPedestal)GetComponent(typeof(VRC_AvatarPedestal));
+        }
+        public override void Interact()
+        {
+            avatarPedestal.SetAvatarUse(Networking.LocalPlayer);
+            Networking.LocalPlayer.UseAttachedStation();
+        }
     }
 }
