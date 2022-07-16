@@ -1,5 +1,8 @@
 # Protected-Avatar-Pedistal
 Protected avatar pedestal is a prefab for automatically decrypting avatars using GTAvacrypt through an avatar pedestal. 
+
+This tool was origionally built for the Loli Police Department roleplay group in VRChat. No affiliation with any actual law enforcement agency. discord.gg/lpd
+
 This prefab is specifically for avatars encrypted with GTAvacrypt V2.2 from https://github.com/rygo6/GTAvaCrypt 
 If you do not use this system, or you dont plan on letting other people use your avatar then this prefab has no use for you.
 This prefab requires UdonSharp and VRChat SDK3 for Worlds. install those before doing anything.
