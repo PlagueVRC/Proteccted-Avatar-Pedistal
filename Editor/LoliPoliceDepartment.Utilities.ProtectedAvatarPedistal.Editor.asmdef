@@ -1,11 +1,15 @@
 ﻿{
 	"name": "LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal.Editor",
-		"references": [
+		"references": 
+        [
+        "UnityEditor.Animations",
+        "UnityEditor",
+        "UnityEngine",
         "UdonSharp.Runtime",
         "UdonSharp.Lib",
         "UdonSharp",
         "VRC.Udon.Editor",
         "VRC.Udon.Serialization.OdinSerializer",
         "VRC.Udon"
-    ]
+        ]
 }
