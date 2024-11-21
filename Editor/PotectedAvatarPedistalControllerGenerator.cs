@@ -28,6 +28,7 @@ namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
     {
         private bool[] keys;
         private string controllerName;
+        private string avtr_id;
         private bool loadMeshParam;
 
         Texture2D HeaderTexture;
@@ -43,7 +44,7 @@ namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
         {
             PotectedAvatarPedistalControllerGenerator window = (PotectedAvatarPedistalControllerGenerator)GetWindow<PotectedAvatarPedistalControllerGenerator>("Pap Controller Generator");
             window.maxSize = new Vector2(1024f, 4000);
-            window.minSize = new Vector2(256, 512);
+            window.minSize = new Vector2(512, 512);
             window.Show();
         }
         private void OnEnable()
@@ -142,70 +143,14 @@ namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
             GUILayout.EndHorizontal();
 
             GUILayout.Space(5f);
-            using (new GUILayout.HorizontalScope(EditorStyles.helpBox, GUILayout.Width(Screen.width)))
-            {
-                GUILayout.BeginVertical();
-                GUILayout.BeginHorizontal();
-                GUILayout.FlexibleSpace();
-                GUILayout.Label("Bitkeys", EditorStyles.boldLabel);
-                GUILayout.FlexibleSpace();
-                GUILayout.EndHorizontal();
-
-                GUILayout.BeginHorizontal();
-                GUILayout.FlexibleSpace();
-                GUILayout.Label("These are the keys used to decrypt the mesh.");
-                GUILayout.FlexibleSpace();
-                GUILayout.EndHorizontal();
-
-                GUILayout.Space(5);
-                GUILayout.BeginHorizontal();
-                GUILayout.FlexibleSpace();
-                GUILayout.BeginVertical();
-
-                //Display in 4 columns
-                for (int i = 0; i < keys.Length / 4; i++)
-                {
-                    GUILayout.BeginHorizontal();
-                    keys[i] = GUILayout.Toggle(keys[i], "BitKey" + i);
-                    GUILayout.EndHorizontal();
-                    GUILayout.Space(5f);
-                }
-                GUILayout.EndVertical();
-                GUILayout.FlexibleSpace();
-                GUILayout.BeginVertical();
-                for (int i = keys.Length / 4; i < keys.Length / 2; i++)
-                {
-                    GUILayout.BeginHorizontal();
-                    keys[i] = GUILayout.Toggle(keys[i], "BitKey" + i);
-                    GUILayout.EndHorizontal();
-                    GUILayout.Space(5f);
-                }
-                GUILayout.EndVertical();
-                GUILayout.FlexibleSpace();
-                GUILayout.BeginVertical();
-                for (int i = keys.Length / 2; i < (keys.Length / 4) * 3; i++)
-                {
-                    GUILayout.BeginHorizontal();
-                    keys[i] = GUILayout.Toggle(keys[i], "BitKey" + i);
-                    GUILayout.EndHorizontal();
-                    GUILayout.Space(5f);
-                }
-                GUILayout.EndVertical();
-                GUILayout.FlexibleSpace();
-                GUILayout.BeginVertical();
-                for (int i = (keys.Length / 4) * 3; i < keys.Length; i++)
-                {
-                    GUILayout.BeginHorizontal();
-                    keys[i] = GUILayout.Toggle(keys[i], "BitKey" + i);
-                    GUILayout.EndHorizontal();
-                    GUILayout.Space(5f);
-                }
-                GUILayout.EndVertical();
-                GUILayout.FlexibleSpace();
-                GUILayout.EndHorizontal();
-                GUILayout.EndHorizontal();
-            }
-            GUILayout.EndArea();
+            
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUILayout.Label("Blueprint ID for proteccted avatar", EditorStyles.wordWrappedLabel, GUILayout.Width(Screen.width / 2 - 20f));
+            GUILayout.FlexibleSpace();
+            avtr_id = GUILayout.TextField(avtr_id, GUILayout.Width(Screen.width / 2 - 20f));
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
 
             GUILayout.BeginArea(new Rect(0, Screen.height - 43f, Screen.width, 25f));
             using (new GUILayout.HorizontalScope())
