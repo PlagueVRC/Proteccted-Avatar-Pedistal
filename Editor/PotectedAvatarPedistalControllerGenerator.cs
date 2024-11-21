@@ -20,6 +20,7 @@ using UnityEditor.Animations;
 using VRC.SDK3.Avatars.Components;
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
 {
@@ -31,6 +32,12 @@ namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
 
         Texture2D HeaderTexture;
 
+        private string CurrentFolder;
+        string GetCurrentFilePath([CallerFilePath] string filePath = null)
+        {
+            return filePath;
+        }
+
         [MenuItem("LPD/Pap Generator")]
         public static void ShowWindow()
         {
@@ -41,11 +48,15 @@ namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
         }
         private void OnEnable()
         {
+            CurrentFolder = Path.GetDirectoryName(GetCurrentFilePath());
+            CurrentFolder = CurrentFolder.Substring(CurrentFolder.IndexOf("Assets\\"));
+            
+            Debug.Log($"Folder: {CurrentFolder}");
             keys = new bool[32];
-            HeaderTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Packages/com.lolipolicedepartment.pap/Editor/TITLEBAR.png", typeof(Texture2D));
-            if (!Directory.Exists("Assets/LPD/Protected Avatar Pedistal/Controllers"))
+            HeaderTexture = (Texture2D)AssetDatabase.LoadAssetAtPath($"{CurrentFolder}/TITLEBAR.png", typeof(Texture2D));
+            if (!Directory.Exists($"{Path.GetDirectoryName(CurrentFolder)}/Controllers"))
             {
-                Directory.CreateDirectory("Assets/LPD/Protected Avatar Pedistal/Controllers/");
+                Directory.CreateDirectory($"{Path.GetDirectoryName(CurrentFolder)}/Controllers/");
                 Debug.Log("<color=teal><b>Pap Generator:</b></color> Created directory for generated controllers");
             }
         }
@@ -74,7 +85,7 @@ namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
                     return;
                 }
                 AnimatorController animator = new AnimatorController();
-                AssetDatabase.CreateAsset(animator, "Assets/LPD/Protected Avatar Pedistal/Controllers/" + controllerName + ".controller");
+                AssetDatabase.CreateAsset(animator, $"{Path.GetDirectoryName(CurrentFolder)}/Controllers/" + controllerName + ".controller");
                 AnimatorControllerLayer layer = new AnimatorControllerLayer
                 {
                     name = controllerName,
@@ -85,7 +96,7 @@ namespace LoliPoliceDepartment.Utilities.ProtectedAvatarPedistal
                     }
                 };
                 animator.AddLayer(layer);
-                AssetDatabase.AddObjectToAsset(layer.stateMachine, "Assets/LPD/Protected Avatar Pedistal/Controllers/" + controllerName + ".controller");
+                AssetDatabase.AddObjectToAsset(layer.stateMachine, $"{Path.GetDirectoryName(CurrentFolder)}/Controllers/" + controllerName + ".controller");
                 AnimatorState state = layer.stateMachine.AddState("Unlock " + controllerName, Vector3.zero);
                 AssetDatabase.SaveAssets();
                 VRCAvatarParameterDriver  driver =  (VRCAvatarParameterDriver)state.AddStateMachineBehaviour(typeof(VRCAvatarParameterDriver));

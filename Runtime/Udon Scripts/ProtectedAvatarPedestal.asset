@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: ProtectedAvatarPedestal
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 72a234a337dc76041b24d9041f8bbfad,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 0a6e0fa8974c7d84781e3deea0a5c656,
     type: 2}
   udonAssembly: 
   assemblyError: 
@@ -21,7 +21,7 @@ MonoBehaviour:
   compiledVersion: 2
   behaviourSyncMode: 0
   hasInteractEvent: 1
-  scriptID: -1312901499882244936
+  scriptID: 2737016250032940639
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
